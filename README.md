@@ -1,6 +1,7 @@
 # SimonData
 
 #### Web UI
+  - Please wait for 2-3 sec
 [http://patelsj35.pythonanywhere.com/]
 #### CLI 
 python simon_data.py

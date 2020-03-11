@@ -2,23 +2,21 @@
 import requests
 import json
 
-# Implementation
-# Store response of 10 shops
-def get_response(each_shop,api_token):
-    # for each_shop in list_shops:
-    url = "https://openapi.etsy.com/v2/shops/"+ each_shop +"/listings/active?api_key="+ api_token
+# Get response from API for shop 
+def get_response(shop,api_token):
+    url = "https://openapi.etsy.com/v2/shops/"+ shop +"/listings/active?api_key="+ api_token
     response = requests.get(url).json()['results']
     return response
 
-# Retrieve each shop's listing title and description and store in dictionary, 
-# example {"shopname":{"listing_id":{"title":"","description":""}}}}
+# Retrieve each shop's listing title and description, 
+# example {"listing_id":{"title":"","description":""}}
 def get_title_description(response):
     listing = {}
     for i in response:
         listing[i['listing_id']] = {'title': i['title'], 'description': i['description']}
     return listing
 
-# Count the freq of words in title and decription and extract words with count > 1
+# Count the freq of words in title and decription and extract words with conditions
 def get_frequency(shop_listing):
     title_counts = {}
     description_counts = {}
@@ -36,7 +34,7 @@ def get_frequency(shop_listing):
         title_result = get_words(title_counts)
         description_result = get_words(description_counts)
     return title_result,description_result
-
+# Remove words from counted dictionary
 def get_words(counts):
     return [word for word in counts if counts[word] > 1 and len(word)>4 and word.isalpha()]
 

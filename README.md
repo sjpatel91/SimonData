@@ -4,7 +4,7 @@
   - Please wait for 2-3 sec
 [http://patelsj35.pythonanywhere.com/]
 #### CLI 
-python simon_data.py
+  - python simon_data.py
 #### Code involves few sections:
   - You can enter your api-token(handles invalid input) or default is set 
   - List of shops(10) are declared
